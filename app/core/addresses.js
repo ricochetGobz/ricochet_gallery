@@ -33,6 +33,14 @@ const adresses = {
   // Bracelet
   BRACELET_CONNECTED: '/bracelet/connected',
   BRACELET_DISCONNECTED: '/bracelet/disconnected',
+
+  // Event emitter
+  // TEMPS
+  GET_COMPOSITIONS: 'get/compositions',
+  SEND_COMPOSITIONS: 'send/compositions',
+  GET_COMPOSITION: 'get/composition',
+  SEND_COMPOSITION: 'send/composition',
+  SEND_NEW_COMPOSITION: 'send/newcomposition',
 };
 
 module.exports = adresses;

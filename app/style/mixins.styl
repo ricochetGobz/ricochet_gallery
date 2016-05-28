@@ -1,0 +1,51 @@
+/**
+*
+* app/style/mixins.styl
+* Mixins
+*
+**/
+
+// CENTER
+center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+centerX() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+centerY() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// CONTAINER
+container() {
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+}
+
+// MEDIA QUERIES
+mobile {
+  @media screen and (max-device-width: 480px) {
+    {block}
+  }
+}
+
+desktop {
+  @media screen and (min-width: 1024px){
+    {block}
+  }
+}
+
+// CIRCLE
+circle($d) {
+  width: $d;
+  height: $d;
+  border-radius: $d;
+}

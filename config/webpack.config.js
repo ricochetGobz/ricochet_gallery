@@ -24,7 +24,7 @@ var config = {
         filename: 'bundle.js',
         publicPath: '/'
     },
-    devtool: "#inline-source-map",
+    devtool: "inline-source-map",
     module: {
       noParse: [],
       loaders: [
@@ -37,12 +37,8 @@ var config = {
           },
         },
         {
-          test: /\.css$/,
-          loader: 'style!css'
-        },
-        {
           test: /\.styl$/,
-          loader: 'style!css!stylus'
+          loader: 'style!css?sourceMap!stylus?sourceMap'
         },
         {
           test: /\.json$/,

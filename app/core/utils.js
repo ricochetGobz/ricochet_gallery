@@ -5,6 +5,8 @@
 *
 **/
 
+import { EventEmitter } from 'fbemitter';
+
 import adrs from './addresses';
 
 const util = {
@@ -22,6 +24,7 @@ const util = {
     }
     return false;
   },
+  emitter: new EventEmitter(),
 };
 
 module.exports = util;
