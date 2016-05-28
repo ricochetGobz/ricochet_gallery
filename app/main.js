@@ -6,6 +6,7 @@ import WSController from './core/WSController';
 import CompositionController from './core/CompositionController';
 import adrs from './core/addresses';
 
+import './style/fonts.styl';
 import './style/base.styl';
 
 // Enable react dev-tools (https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)

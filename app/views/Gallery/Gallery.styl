@@ -1,0 +1,26 @@
+
+@import '../../style/variables';
+
+.Gallery {
+
+  &-header {
+    margin-bottom: _margin*4;
+  }
+
+  &-title {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-image: url('../'+imgsPath+'galleryTitle.jpg');
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: 50% 50%;
+  }
+
+  &-compositions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+    margin: _margin/2;
+  }
+}

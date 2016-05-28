@@ -36,10 +36,10 @@ export default class CompositionView extends Component {
   render() {
     let composition;
     if (this.state.composition) {
-      composition = <h1>Composition {this.state.composition.name}</h1>;
+      composition = <h1>{this.state.composition.title}</h1>;
     }
     return (
-      <section className="_content">
+      <section className="_wrapper">
         {composition}
       </section>
     );

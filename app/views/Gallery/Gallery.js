@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
-import adrs from '../core/addresses';
-import utils from '../core/utils';
-import Composition from '../components/Composition/Composition';
+import adrs from '../../core/addresses';
+import utils from '../../core/utils';
+
+import Composition from '../../components/Composition/Composition';
+
+import './Gallery.styl';
 
 export default class Gallery extends Component {
   constructor(props) {
@@ -36,8 +39,10 @@ export default class Gallery extends Component {
 
   render() {
     return (
-      <section className="Gallery _content">
-        <h1>Gallery</h1>
+      <section className="Gallery _wrapper">
+        <header className="Gallery-header">
+          <h1 className="Gallery-title" ref="title">Sonothèque</h1>
+        </header>
 
         <ul className="Gallery-compositions">
           {

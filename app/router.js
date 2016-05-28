@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import Layout from './views/Layout';
-import Gallery from './views/Gallery';
+import Gallery from './views/Gallery/Gallery';
 import CompositionView from './views/CompositionView';
 
 export default function Root() {

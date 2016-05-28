@@ -35,7 +35,6 @@ const adresses = {
   BRACELET_DISCONNECTED: '/bracelet/disconnected',
 
   // Event emitter
-  // TEMPS
   GET_COMPOSITIONS: 'get/compositions',
   SEND_COMPOSITIONS: 'send/compositions',
   GET_COMPOSITION: 'get/composition',

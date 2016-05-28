@@ -22,7 +22,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, '../public'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: 'http://localhost:3333/'
     },
     devtool: "inline-source-map",
     module: {
@@ -38,7 +38,7 @@ var config = {
         },
         {
           test: /\.styl$/,
-          loader: 'style!css?sourceMap!stylus?sourceMap'
+          loader: 'style!css?sourceMap!stylus'
         },
         {
           test: /\.json$/,
