@@ -46,14 +46,18 @@ overlay() {
 }
 
 // MEDIA QUERIES
-mobile {
+mobile() {
   @media screen and (max-device-width: 480px) {
     {block}
   }
 }
-
-desktop {
+desktop() {
   @media screen and (min-width: 1024px){
+    {block}
+  }
+}
+mediaqueries(maxWidth) {
+  @media screen and (max-width: maxWidth){
     {block}
   }
 }

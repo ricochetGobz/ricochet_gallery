@@ -1,20 +1,36 @@
 
 @import '../../style/variables';
+@import '../../style/mixins';
 
 .Gallery {
+  position: relative;
 
   &-header {
     margin-bottom: _margin*4;
+
+    +mobile() {
+      margin-bottom: _margin*2;
+    }
   }
 
   &-title {
-    height: 100px;
     line-height: 100px;
     text-align: center;
     background-image: url('../'+imgsPath+'galleryTitle.jpg');
     background-repeat: no-repeat;
     background-size: 400px;
     background-position: 50% 50%;
+
+    +mediaqueries(responciveQueries) {
+      font-size: 2em;
+      line-height: 2em;
+      background-size: 300px;
+    }
+
+    +mobile() {
+      font-size: 1.6em;
+      background-size: 250px;
+    }
   }
 
   &-compositions {
@@ -23,5 +39,9 @@
     flex-wrap:wrap;
     align-items: flex-start;
     margin: _margin/2;
+
+    +mediaqueries(responciveQueries) {
+      justify-content: space-around;
+    }
   }
 }
