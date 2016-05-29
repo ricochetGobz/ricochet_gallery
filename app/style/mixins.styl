@@ -30,6 +30,21 @@ container() {
   margin: auto;
 }
 
+// OVERLAY
+overlay() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: overlayColor;
+  transition: 0.2s;
+    &:hover {
+      opacity: 1;
+    }
+}
+
 // MEDIA QUERIES
 mobile {
   @media screen and (max-device-width: 480px) {

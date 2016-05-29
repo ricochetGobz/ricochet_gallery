@@ -2,7 +2,6 @@
 @import '../../style/variables';
 
 compositionWidth = 280px;
-headerHeight = 40px;
 
 .Composition {
   width: compositionWidth;
@@ -11,14 +10,14 @@ headerHeight = 40px;
   flex-direction: column-reverse;
   cursor: pointer;
 
+  // HEADER
   &-header {
-    height: headerHeight;
     margin-top: _margin;
     padding: _margin*0.5 0;
     border-top: 2px solid lineColor;
     display: flex;
     justify-content: space-between;
-    align-items: top;
+    align-items: flex-start;
   }
 
   &-detail {
@@ -27,31 +26,67 @@ headerHeight = 40px;
     height: 100%;
   }
 
+  &-title, &-author {
+    letter-spacing: 0.2em;
+  }
+
+  &-title {
+    font-size: 0.85em;
+    overflow: hidden;
+  }
+
+  &-author {
+    font-size: 0.75em;
+
+  }
+
   &-description {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-  }
-
-  &-date, &-description {
-    width: 50%;
+    width: 70%
+    overflow: hidden;
   }
 
   &-icon {
-    margin-right: _margin*0.5;
+    margin-right: _margin * 0.5;
     &_note {
-      height: headerHeight*0.6;
+      height: _margin * 1.5;
     }
-  }
-
-  &-jacket {
-    width: compositionWidth;
-    height: compositionWidth;
   }
 
   &-date {
     font-size: 0.7em;
     text-align: right;
   }
+
+  // JACKET
+  &-jacket {
+    position: relative;
+    width: compositionWidth;
+    height: compositionWidth;
+  }
+
+  &-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: overlayColor;
+    transition: 0.2s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+  }
+
 }
