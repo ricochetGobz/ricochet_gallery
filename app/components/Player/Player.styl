@@ -1,0 +1,40 @@
+
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.Player {
+
+  &-render {
+    position: relative;
+    width: columnSize;
+    height: columnSize;
+  }
+
+  &-partition {
+    width: columnSize;
+    height (columnSize/3);
+    margin: _margin*3 0;
+  }
+
+  &-timer {
+    position: absolute;
+    right: _margin;
+    bottom: _margin;
+    font-size: 2em;
+    letter-spacing: 1px;
+    color: fontColorSecondary;
+    font-family: 'circularstd-bold', sans-serif;
+  }
+
+  &-overlay {
+    position: relative;
+    overlay();
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &-button {
+    center();
+  }
+
+}

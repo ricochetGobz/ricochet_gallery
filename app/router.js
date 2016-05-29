@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import Layout from './views/Layout';
 import Gallery from './views/Gallery/Gallery';
-import CompositionView from './views/CompositionView';
+import CompositionView from './views/CompositionView/CompositionView';
 
 export default function Root() {
   return (

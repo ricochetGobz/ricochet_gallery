@@ -12,7 +12,7 @@ export default class Annotation extends Component {
 
   render() {
     return (
-      <div className="Annotation _frame">
+      <div className="Annotation _frame _frame_blue">
         <header className="Annotation-header">
           <img className="Composition-icon Composition-icon_note"
             src={iconPhoneImage}

@@ -1,0 +1,43 @@
+
+@import '../../style/variables';
+@import '../../style/mixins';
+
+buttonHeight = 2.5em;
+
+roundButton(d, img) {
+  circle(d);
+  padding: 0;
+  background-image: url(img);
+  background-position: 50% 50%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.Button {
+  font-size: 0.7em;
+  line-height: buttonHeight;
+  border-radius: buttonHeight;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 2px solid fontColor;
+  color: fontColor;
+  padding: 0 _margin*1.8;
+  cursor: pointer;
+
+  &_green {
+    border-color: validColor;
+    color: validColor;
+  }
+
+  &_play {
+    roundButton(100px, '../'+imgsPath+'/iconNote.png');
+  }
+
+  &_close {
+    roundButton(60px, '../'+imgsPath+'/iconNote.png');
+    position: absolute;
+    top: _margin*2;
+    right: _margin*3;
+    border-color: fontColorSecondary;
+  }
+}
