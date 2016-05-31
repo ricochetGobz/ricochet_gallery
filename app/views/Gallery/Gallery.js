@@ -23,6 +23,9 @@ export default class Gallery extends Component {
     this._subscriptions.push(
       utils.emitter.addListener(adrs.SEND_COMPOSITIONS, this._onCompositionsReceived.bind(this))
     );
+    this._subscriptions.push(
+      utils.emitter.addListener(adrs.SEND_NEW_COMPOSITION, this._onNewCompositionReceived.bind(this))
+    );
     utils.emitter.emit(adrs.GET_COMPOSITIONS);
   }
 
@@ -35,10 +38,22 @@ export default class Gallery extends Component {
   }
 
   _onCompositionsReceived(compositions) {
+    console.log("compo received");
     this.setState({ compositions });
+  }
+  _onNewCompositionReceived(newCompositions, compositionId) {
+    // ERROR setState doexn't works
+    this.setState({ compositions: newCompositions });
+
+    // TODO afficher la pop up pour enregistrer les données de la nouvelle compo.
   }
 
   render() {
+    console.log(this.state);
+
+    const c = this.state.compositions.map((composition) =>
+      <Composition data={composition} key={composition.id} />
+    );
     return (
       <section className="Gallery _wrapper">
 
