@@ -15,7 +15,7 @@ export default class CompositionController {
   }
 
   pushComposition(composition) {
-    this._compositions.push(composition);
+    this._compositions.unshift(composition);
     utils.emitter.emit(adrs.SEND_NEW_COMPOSITION, this._compositions, composition.id);
   }
 

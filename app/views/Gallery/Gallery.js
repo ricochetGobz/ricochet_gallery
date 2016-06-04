@@ -38,19 +38,17 @@ export default class Gallery extends Component {
   }
 
   _onCompositionsReceived(compositions) {
-    console.log("compo received");
+    console.log('Compositions received');
     this.setState({ compositions });
   }
   _onNewCompositionReceived(newCompositions, compositionId) {
-    // ERROR setState doexn't works
+    console.log('New composition received');
     this.setState({ compositions: newCompositions });
 
     // TODO afficher la pop up pour enregistrer les données de la nouvelle compo.
   }
 
   render() {
-    console.log(this.state);
-
     const c = this.state.compositions.map((composition) =>
       <Composition data={composition} key={composition.id} />
     );
