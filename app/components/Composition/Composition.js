@@ -16,6 +16,11 @@ export default class Composition extends Component {
   }
 
   render() {
+    const title = this.props.data.title ?
+     this.props.data.title :
+     `Compo ${this.props.data.id}`
+    ;
+
     return (
       <li className="Composition" onClick={() => this._linkToComponent(this.props.data.id)}>
         <header className="Composition-header">
@@ -25,7 +30,7 @@ export default class Composition extends Component {
               alt="Note icon"
             />
             <div className="Composition-detail">
-              <h3 className="Composition-title">{this.props.data.title}</h3>
+              <h3 className="Composition-title">{title}</h3>
               <p className="Composition-author">{this.props.data.author}</p>
             </div>
           </div>

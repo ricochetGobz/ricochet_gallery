@@ -5,6 +5,7 @@ import utils from '../../core/utils';
 
 import Composition from '../../components/Composition/Composition';
 import Annotation from '../../components/Annotation/Annotation';
+import Popup from '../../components/Popup/Popup';
 
 import './Gallery.styl';
 
@@ -15,6 +16,7 @@ export default class Gallery extends Component {
     this._subscriptions = [];
     this.state = {
       compositions: [],
+      newCompositionId: -1,
     };
   }
 
@@ -41,17 +43,13 @@ export default class Gallery extends Component {
     console.log('Compositions received');
     this.setState({ compositions });
   }
-  _onNewCompositionReceived(newCompositions, compositionId) {
-    console.log('New composition received');
-    this.setState({ compositions: newCompositions });
 
-    // TODO afficher la pop up pour enregistrer les données de la nouvelle compo.
+  _onNewCompositionReceived(compositions, newCompositionId) {
+    console.log('New composition received');
+    this.setState({ compositions, newCompositionId });
   }
 
   render() {
-    const c = this.state.compositions.map((composition) =>
-      <Composition data={composition} key={composition.id} />
-    );
     return (
       <section className="Gallery _wrapper">
 
@@ -68,6 +66,7 @@ export default class Gallery extends Component {
           }
         </ul>
 
+        <Popup newCompositionId={this.state.newCompositionId} />
       </section>
     );
   }

@@ -1,0 +1,60 @@
+
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+
+
+  &-label {
+    font-style: italic;
+    font-size: 0.8em;
+  }
+
+  &-input {
+    position: relative;
+    border-bottom: 2px solid fontColor;
+    margin: _margin*0.5 0;
+
+    input {
+      padding: _margin*0.7;
+      padding-left: _margin*2;
+      color: fontColorSecondary;
+      letter-spacing: 2px;
+
+      &::placeholder {
+        text-transform: uppercase;
+        font-size: 0.7em;
+        color: fontColorSecondary;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.3em;
+      height: 1.3em;
+      margin-top: _margin*0.7;
+      background-image: url('../'+imgsPath+'iconNote.png')
+      background-size: cover;
+
+    }
+
+    &_mail {
+      &::after {
+        // background-image: url('../'+imgsPath+'iconMail.png')
+      }
+    }
+
+    &_author {
+      &::after {
+        // background-image: url('../'+imgsPath+'iconMail.png')
+      }
+    }
+  }
+}

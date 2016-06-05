@@ -16,13 +16,13 @@ export default class Player extends Component {
   render() {
     return (
       <div className="Player">
-        <div className="Player-render _frame">
+        <div className="Player-render  _frame _frame_purple">
           <div className="Player-overlay" onClick={this._togglePlayer}>
             <span className="Player-button Button Button_play" />
           </div>
           <span className="Player-timer">0:00</span>
         </div>
-        <div className="Player-partition _frame"></div>
+        <div className="Player-partition  _frame _frame_purple"></div>
       </div>
     );
   }

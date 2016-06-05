@@ -2,18 +2,70 @@
 @import '../../style/variables';
 @import '../../style/mixins';
 
-columnSize = 400px;
-
 .CompositionView {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
 
-  &-column {
-    width: columnSize;
+  &._wrapper {
+    padding: _margin*8;
+  }
+
+  &-column_left {
+    width: playerSize;
+  }
+
+  &-column_right {
+    width: 300px;
+  }
+
+  &-dateDiff {
+    text-align: right;
+    border-bottom: 1px solid lineColor;
+    padding-bottom: _margin;
   }
 
   &-title {
+    font-size: 2em;
+    margin-top: _margin*2;
+    color: fontColorSecondary;
+  }
 
+  &-author {
+    color: fontColorSecondary;
+    font-size: 1em;
+
+    span+span {
+      color: fontColor;
+    }
+  }
+
+  &-info {
+    margin: _margin*2 0;
+    padding: _margin*2;
+    padding-top: _margin*3;
+    text-align: center;
+
+    img{
+      margin-top: _margin;
+    }
+  }
+
+  // FORM
+  &-form {
+    margin-top: _margin*3;
+
+    // HACK
+    .Form-label, .Form-input {
+      width: 100%;
+    }
+    .Button_green {
+      margin-top: _margin*2;
+    }
+
+    .Button {
+      width: 50%;
+    }
   }
 }

@@ -24,6 +24,11 @@ export default class CompositionController {
   }
 
   sendComposition(id) {
+    if(typeof id === 'string') {
+      console.error(`CompositionController.sendComposition() ERROR : id param is a string => ${id}`);
+      return;
+    }
+
     for (const composition of this._compositions) {
       if (composition.id === id) {
         utils.emitter.emit(adrs.SEND_COMPOSITION, composition);

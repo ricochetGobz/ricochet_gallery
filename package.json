@@ -23,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "fbemitter": "^2.0.2",
+    "gsap": "^1.18.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
