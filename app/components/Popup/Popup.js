@@ -7,7 +7,6 @@ import utils from '../../core/utils';
 import './Popup.styl';
 
 export default class Popup extends Component {
-
   constructor(props) {
     super(props);
 
@@ -25,8 +24,8 @@ export default class Popup extends Component {
       onComplete: () => { this.openned = true; },
       onReverseComplete: () => this.refs.popup.classList.add('Popup_hidden'),
     });
-    this.openCloseTimeline.to(this.refs.popup, 0.2, { opacity: 1 });
-    this.openCloseTimeline.to(this.refs.wrapper, 0.3, { top: '50%' }, '-=0.2');
+    this.openCloseTimeline.to(this.refs.popup, 0.2, { ease: Power3.easeOut, opacity: 1 }, '-=0.2');
+    this.openCloseTimeline.to(this.refs.wrapper, 0.3, { ease: Power3.easeOut, top: '50%' }, '-=0.2');
   }
 
   componentDidUpdate() {

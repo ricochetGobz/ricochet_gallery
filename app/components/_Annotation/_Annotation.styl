@@ -2,14 +2,10 @@
 @import '../../style/variables';
 @import '../../style/mixins';
 
-annotationWidth = 250px;
-
 .Annotation {
-  position: absolute;
-  width: annotationWidth;
-  top: _margin*2;
-  left: -(annotationWidth/2);
   padding: _margin * 1.5;
+  margin-top: 20px;
+  opacity: 0;
 
   &-title {
     position: relative;
@@ -25,7 +21,6 @@ annotationWidth = 250px;
       left: -(_margin*2);
       icon(_margin*2, 6);
     }
-
   }
 
   &-paragraph {
@@ -34,25 +29,16 @@ annotationWidth = 250px;
     margin-left: 25%;
   }
 
-  &::after {
-    content: '';
+  &-bar {
     position: absolute;
     top: -5px;
     left: -15px;
-    width: 50px;
+    width: 0;
     height: 10px;
     background-color: markColor;
   }
 
-  +mediaqueries(responciveQueries) {
-    position: fixed;
-    z-index: 1;
-    top: auto;
-    bottom: _margin;
-    left: _margin*4;
-  }
-
-  +mobile() {
-    display: none;
+  &_alert .Annotation-title::after {
+    icon(_margin*2, 8);
   }
 }

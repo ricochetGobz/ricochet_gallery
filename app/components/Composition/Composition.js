@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 
 import _DateDiff from '../_DateDiff/_DateDiff';
 
@@ -8,12 +7,6 @@ import jacketImage from '../../assets/imgs/jacket.jpg';
 
 export default class Composition extends Component {
 
-  componentDidMount() {}
-
-  _linkToComponent(id) {
-    browserHistory.push(`/gallery/composition/${id}`);
-  }
-
   render() {
     const title = this.props.data.title ?
      this.props.data.title :
@@ -21,7 +14,7 @@ export default class Composition extends Component {
     ;
 
     return (
-      <li className="Composition" onClick={() => this._linkToComponent(this.props.data.id)}>
+      <li className="Composition" onClick={() => this.props.linkToComposition(this.props.data.id)} >
         <header className="Composition-header">
           <div className="Composition-detail">
             <h3 className="Composition-title">{title}</h3>
@@ -40,4 +33,5 @@ export default class Composition extends Component {
 
 Composition.propTypes = {
   data: React.PropTypes.object,
+  linkToComposition: React.PropTypes.function,
 };

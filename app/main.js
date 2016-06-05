@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import Root from './router';
 import WSController from './core/WSController';
 import CompositionController from './core/CompositionController';
+
+import utils from './core/utils';
 import adrs from './core/addresses';
 
 import './style/fonts.styl';
@@ -26,12 +28,12 @@ compositionCtrl.onCompositionUpdated((composition) => {
 
 WSCtrl.on(adrs.SERVER_CONNECTED, () => {
   console.log('WebSocket Client Connected');
-  // TODO afficher un chargement
+  utils.emitter.emit(adrs.SERVER_CONNECTED);
 });
 
 WSCtrl.on(adrs.SERVER_DISCONNECTED, () => {
   console.log('echo-protocol Client Closed');
-  // TODO afficher un message de déconnection
+  utils.emitter.emit(adrs.SERVER_DISCONNECTED);
 });
 
 WSCtrl.on(adrs.GALLERY_COMPOSITIONS, (compositions) => {
