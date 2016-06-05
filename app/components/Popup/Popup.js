@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { TimelineLite } from 'gsap';
+
+import adrs from '../../core/addresses';
+import utils from '../../core/utils';
+
 import './Popup.styl';
 
 export default class Popup extends Component {
@@ -52,9 +56,16 @@ export default class Popup extends Component {
   }
 
   _save() {
-    // TODO save new values of composition into server.
-    console.log('save new values');
+    const author = this.refs.author.value;
+    const title = this.refs.title.value;
+
+    // TODO vérifier si les champs ne sont pas vides.
+
+    utils.emitter.emit(adrs.UPDATE_COMPOSITION, this._newCompositionId, title, author);
+
     this._close();
+
+    return false;
   }
 
   render() {
@@ -71,10 +82,10 @@ export default class Popup extends Component {
 
             <form action="#" className="Popup-form Form">
               <div className="Form-input">
-                <input type="text" placeholder="Nom de la partition" />
+                <input ref="title" type="text" placeholder="Nom de la partition" />
               </div>
               <div className="Form-input Form-input_author">
-                <input type="text" placeholder="Auteur de la composition" />
+                <input ref="author" type="text" placeholder="Auteur de la composition" />
               </div>
               <button className="Button Button_green" onClick={this._save} >Valider</button>
             </form>

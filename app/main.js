@@ -20,6 +20,10 @@ const compositionCtrl = new CompositionController(); // TODO use alt.js
  * WEB SOCKET CONTROLLER
  * #########################
  */
+compositionCtrl.onCompositionUpdated((composition) => {
+  WSCtrl.send(adrs.GALLERY_UPDATE_COMPOSITION, composition);
+});
+
 WSCtrl.on(adrs.SERVER_CONNECTED, () => {
   console.log('WebSocket Client Connected');
   // TODO afficher un chargement
