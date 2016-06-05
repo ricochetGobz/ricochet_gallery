@@ -4,6 +4,16 @@
 
 
 .DateDiff {
-  font-size: 0.75em;
+  position: relative;
+  font-size: 0.7em;
+  letter-spacing: 2px;
+  padding-left: _margin*1.3;
   text-align: right;
+
+  &::after{
+    content: '';
+    centerY();
+    left: 0;
+    icon(_margin*0.8, 4);
+  }
 }

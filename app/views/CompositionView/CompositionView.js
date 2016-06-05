@@ -8,7 +8,7 @@ import Player from '../../components/Player/Player';
 import '../../components/_Form/_Form.styl';
 
 import './CompositionView.styl';
-import iconPhoneImage from '../../assets/imgs/iconNote.png';
+import './CompositionView.styl';
 
 
 export default class CompositionView extends Component {
@@ -81,10 +81,6 @@ export default class CompositionView extends Component {
             <p className="CompositionView-paragraph"> Il est possible de scanner le code
             afin d'enregistrer la composition sur l'application
             <strong> RICOCHET.</strong></p>
-            <img className="Composition-icon Composition-icon_note"
-              src={iconPhoneImage}
-              alt="Note icon"
-            />
           </div>
           <form action="" className="CompositionView-form Form">
             <label className="Form-label" htmlFor="mail">Recevoir la partitions ?</label>

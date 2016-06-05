@@ -11,21 +11,27 @@ annotationWidth = 250px;
   left: -(annotationWidth/2);
   padding: _margin * 1.5;
 
-
-  &-header {
-    display: flex;
-    margin-bottom: _margin;
-  }
-
   &-title {
+    position: relative;
     width: 80%;
+    margin-left: _margin*3;
+    margin-bottom: _margin;
     border-bottom: 1px solid lineColor;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -(_margin*2);
+      icon(_margin*2, 6);
+    }
+
   }
 
   &-paragraph {
     text-align: right;
-    width: 90%;
-    margin-left: 10%;
+    width: 75%;
+    margin-left: 25%;
   }
 
   &::after {

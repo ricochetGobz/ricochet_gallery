@@ -35,25 +35,20 @@
     &::after {
       content: '';
       position: absolute;
-      top: 0;
+      top: _margin*0.75;
       left: 0;
-      width: 1.3em;
-      height: 1.3em;
-      margin-top: _margin*0.7;
-      background-image: url('../'+imgsPath+'iconNote.png')
-      background-size: cover;
-
+      icon(_margin*1.2, 8);
     }
 
     &_mail {
       &::after {
-        // background-image: url('../'+imgsPath+'iconMail.png')
+        icon(_margin*1.2, 5);
       }
     }
 
     &_author {
       &::after {
-        // background-image: url('../'+imgsPath+'iconMail.png')
+        icon(_margin*1.2, 7);
       }
     }
   }

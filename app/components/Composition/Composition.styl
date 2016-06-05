@@ -22,9 +22,18 @@ compositionWidth = 280px;
   }
 
   &-detail {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-left: _margin*1.5;
+
+    &::after {
+      content: '';
+      icon(_margin*1.2, 8);
+      centerY();
+      left: -(_margin*1.5);
+    }
   }
 
   &-title {
@@ -35,22 +44,6 @@ compositionWidth = 280px;
   &-author {
     font-size: 0.75em;
     letter-spacing: 0.2em;
-  }
-
-  &-description {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    width: 70%
-    overflow: hidden;
-  }
-
-  &-icon {
-    margin-right: _margin * 0.5;
-    &_note {
-      height: _margin * 1.5;
-    }
   }
 
   // JACKET

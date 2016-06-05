@@ -4,13 +4,12 @@
 
 buttonHeight = 2.5em;
 
-roundButton(d, img) {
-  circle(d);
+roundButton(size, sprite){
+  circle(size);
+  icon(size, sprite);
+  border: 0;
+  margin: 0;
   padding: 0;
-  background-image: url(img);
-  background-position: 50% 50%;
-  background-size: 50%;
-  background-repeat: no-repeat;
 }
 
 .Button {
@@ -31,14 +30,22 @@ roundButton(d, img) {
   }
 
   &_play {
-    roundButton(100px, '../'+imgsPath+'/iconNote.png');
+    roundButton(_margin*6, 0);
+  }
+
+  &_pause {
+    roundButton(_margin*6, 2);
   }
 
   &_close {
-    roundButton(60px, '../'+imgsPath+'/iconNote.png');
+    roundButton(_margin*3, 3);
     position: absolute;
     top: _margin*2;
     right: _margin*3;
-    border-color: fontColorSecondary;
+    transition: 0.2s;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
   }
 }
