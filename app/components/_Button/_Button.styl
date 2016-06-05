@@ -10,19 +10,31 @@ roundButton(size, sprite){
   border: 0;
   margin: 0;
   padding: 0;
+
+  &:hover {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .Button {
   font-size: 0.7em;
-  line-height: buttonHeight;
   border-radius: buttonHeight;
   text-transform: uppercase;
   letter-spacing: 3px;
   border: 3px solid fontColor;
   color: fontColor;
-  padding: 0 _margin*1.8;
+  padding: _margin*0.5 _margin*1.8;
   margin: _margin*0.5 0;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    margin-top: _margin*0.25;
+    margin-bottom: _margin*0.75;
+    padding-top: _margin*0.3;
+    padding-bottom: _margin*0.7;
+  }
 
   &_green {
     border-color: validColor;
