@@ -11,6 +11,29 @@ compositionWidth = 280px;
   flex-direction: column-reverse;
   cursor: pointer;
 
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .Gradient {
+      transition 0.2
+
+      &_purple {
+        background linear-gradient(45deg, #BE87C4, #B2A2DA);
+      }
+
+      &_green {
+        background linear-gradient(135deg, #AEE6C8, #94DADB);
+      }
+
+      &_red {
+        background linear-gradient(135deg, #D68598, #D68598);
+      }
+    }
+
   // HEADER
   &-header {
     margin-top: _margin;
@@ -53,13 +76,7 @@ compositionWidth = 280px;
     height: compositionWidth;
   }
 
-  &-image {
-    width: 100%;
-    height: 100%;
-  }
-
   &-overlay {
     overlay();
   }
-
 }

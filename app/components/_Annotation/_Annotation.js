@@ -20,7 +20,6 @@ export default class Annotation extends Component {
     });
     this.openCloseTimeline.to(this.refs.annotation, 0.5, { ease: Power3.easeOut, opacity: 1, 'margin-top': 0 }, '+=0.6');
     this.openCloseTimeline.to(this.refs.bar, 0.5, { ease: Power3.easeOut, 'width': '50px' }, '-=0.4');
-
     this._checkStatus();
   }
 

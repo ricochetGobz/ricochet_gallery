@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 
+import CodeGenerator from '../../core/CodeGenerator';
+
 import _DateDiff from '../_DateDiff/_DateDiff';
 
 import './Composition.styl';
-import jacketImage from '../../assets/imgs/jacket.jpg';
 
 export default class Composition extends Component {
+  constructor(props) {
+    super(props);
+    this.code = false;
+  }
+
+  componentDidMount() {
+    this.code = new CodeGenerator(this.refs.jacket, this.props.data.id);
+    this.code.randomize();
+  }
+
+  _randomize() {
+    this.code.randomize();
+  }
 
   render() {
     const title = this.props.data.title ?
@@ -14,7 +28,10 @@ export default class Composition extends Component {
     ;
 
     return (
-      <li className="Composition" onClick={() => this.props.linkToComposition(this.props.data.id)} >
+      <li className="Composition"
+        onClick={() => this.props.linkToComposition(this.props.data.id)}
+        onMouseEnter={this._randomize.bind(this)}
+      >
         <header className="Composition-header">
           <div className="Composition-detail">
             <h3 className="Composition-title">{title}</h3>
@@ -22,9 +39,8 @@ export default class Composition extends Component {
           </div>
           <_DateDiff createdAt={this.props.data.createdAt} />
         </header>
-        <section className="Composition-jacket">
+        <section ref="jacket" className="Composition-jacket">
           <div className="Composition-overlay"></div>
-          <img className="Composition-image" src={jacketImage} alt="Composition jacket" />
         </section>
       </li>
     );
