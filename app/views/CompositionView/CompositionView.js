@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 
 import adrs from '../../core/addresses';
 import utils from '../../core/utils';
+import CodeGenerator from '../../core/codeGenerator';
 import _DateDiff from '../../components/_DateDiff/_DateDiff';
 import Player from '../../components/Player/Player';
 import '../../components/_Form/_Form.styl';
@@ -25,6 +26,9 @@ export default class CompositionView extends Component {
   }
 
   componentDidMount() {
+    this.code = new CodeGenerator(this.refs.jacket, 1);
+    this.code.drawLines();
+
     this._subscriptions.push(
       utils.emitter.addListener(adrs.SEND_COMPOSITION, this._onCompositionReceived)
     );
@@ -77,10 +81,12 @@ export default class CompositionView extends Component {
 
           {author}
 
-          <div className="CompositionView-info _frame _frame_purple Form">
-            <p className="CompositionView-paragraph"> Il est possible de scanner le code
-            afin d'enregistrer la composition sur l'application
-            <strong> RICOCHET.</strong></p>
+          <div ref="jacket" className="CompositionView-code _frame _frame_purple Form">
+            <div className="CompositionView-info">
+              <p className="CompositionView-paragraph"> Il est possible de scanner le code
+              afin d'enregistrer la composition sur l'application
+              <strong> RICOCHET.</strong></p>
+            </div>
           </div>
           <form action="" className="CompositionView-form Form">
             <label className="Form-label" htmlFor="mail">Recevoir la partitions ?</label>

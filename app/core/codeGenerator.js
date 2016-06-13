@@ -18,7 +18,7 @@ export default class CodeGenerator {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.id = `code-${id}`;
     this._jacket = element;
-    this._jacket.appendChild(svg);
+    this._jacket.insertBefore( svg, this._jacket.firstChild );
     this._jacketClassName = this._jacket.className;
     this.changeGradient();
 

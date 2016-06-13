@@ -29,7 +29,11 @@ export default class Layout extends Component {
   }
 
   _onServerDisconnected() {
-    this.setState({ alertMessage: { title: 'Server Disconnected', content: 'Please make sure  sure the server is started and refresh to reconnect.' } });
+    this.setState({ alertMessage:
+       { title: 'Server Disconnected',
+         content: 'Please make sure  sure the server is started and refresh to reconnect.',
+       },
+    });
   }
 
   render() {

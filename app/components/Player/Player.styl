@@ -4,6 +4,11 @@
 
 .Player {
 
+  // TODO ajouter une class au svg d'office
+  svg {
+    center();
+  }
+
   &-render {
     position: relative;
     width: playerSize;
@@ -29,12 +34,14 @@
   &-overlay {
     position: relative;
     overlay();
-    background-color: transparent;
     cursor: pointer;
   }
 
   &-button {
     center();
-  }
 
+    &.Button {
+      transition: 0s;
+    }
+  }
 }

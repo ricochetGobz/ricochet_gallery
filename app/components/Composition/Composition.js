@@ -5,16 +5,20 @@ import CodeGenerator from '../../core/CodeGenerator';
 import _DateDiff from '../_DateDiff/_DateDiff';
 
 import './Composition.styl';
+import '../_Gradient/_Gradient.styl';
+
 
 export default class Composition extends Component {
   constructor(props) {
     super(props);
     this.code = false;
+
+    this._randomize = this._randomize.bind(this);
   }
 
   componentDidMount() {
     this.code = new CodeGenerator(this.refs.jacket, this.props.data.id);
-    this.code.randomize();
+    this.code.drawLines();
   }
 
   _randomize() {
@@ -30,7 +34,7 @@ export default class Composition extends Component {
     return (
       <li className="Composition"
         onClick={() => this.props.linkToComposition(this.props.data.id)}
-        onMouseEnter={this._randomize.bind(this)}
+        onMouseEnter={this._randomize}
       >
         <header className="Composition-header">
           <div className="Composition-detail">

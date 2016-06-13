@@ -42,14 +42,35 @@
     }
   }
 
-  &-info {
+  &-code {
+    position: relative;
     margin: _margin*2 0;
+    // TODO ajouter une class au svg d'office
+    svg {
+      center();
+    }
+
+    &:hover {
+
+      .CompositionView-info {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-info {
+    z-index: 9;
+    opacity: 0;
+    background-color: white;
     padding:_margin*3;
     padding-top: _margin*3;
     text-align: center;
+    transition: 0.2s;
 
     &::after {
       content: '';
+      display: block;
+      margin: auto;
       margin-top: _margin*1.5;
       icon(_margin*2, 6);
     }

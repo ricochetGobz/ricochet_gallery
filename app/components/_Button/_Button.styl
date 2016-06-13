@@ -7,6 +7,7 @@ buttonHeight = 2.5em;
 roundButton(size, sprite){
   circle(size);
   icon(size, sprite);
+  display: block;
   border: 0;
   margin: 0;
   padding: 0;
@@ -43,10 +44,18 @@ roundButton(size, sprite){
 
   &_play {
     roundButton(_margin*6, 0);
+
+    &:hover {
+      transform: rotate(120deg);
+    }
   }
 
   &_pause {
     roundButton(_margin*6, 2);
+
+    &:hover {
+      transform: rotate(180deg);
+    }
   }
 
   &_close {

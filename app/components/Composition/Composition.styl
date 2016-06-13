@@ -11,27 +11,9 @@ compositionWidth = 280px;
   flex-direction: column-reverse;
   cursor: pointer;
 
+  // TODO ajouter une class au svg d'office
     svg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .Gradient {
-      transition 0.2
-
-      &_purple {
-        background linear-gradient(45deg, #BE87C4, #B2A2DA);
-      }
-
-      &_green {
-        background linear-gradient(135deg, #AEE6C8, #94DADB);
-      }
-
-      &_red {
-        background linear-gradient(135deg, #D68598, #D68598);
-      }
+      center();
     }
 
   // HEADER
@@ -45,10 +27,10 @@ compositionWidth = 280px;
   }
 
   &-detail {
+    min-height: _margin*2
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
     margin-left: _margin*1.5;
 
     &::after {
