@@ -2,6 +2,9 @@
 @import '../../style/variables';
 @import '../../style/mixins';
 
+annotationWidth = 250px;
+
+
 .Gallery {
   position: relative;
 
@@ -33,9 +36,27 @@
     }
   }
 
+  &-annotation {
+    position: absolute;
+    width: annotationWidth;
+    top: _margin*2;
+    left: -(annotationWidth/2);
+
+    +mediaqueries(responciveQueries) {
+      position: fixed;
+      z-index: 1;
+      top: auto;
+      bottom: _margin;
+      left: _margin*4;
+    }
+
+    +mobile() {
+      display: none;
+    }
+  }
+
   &-compositions {
     display: flex;
-    justify-content: space-between;
     flex-wrap:wrap;
     align-items: flex-start;
     margin: _margin/2;

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 import adrs from '../../core/addresses';
 import utils from '../../core/utils';
 
 import Composition from '../../components/Composition/Composition';
-import Annotation from '../../components/Annotation/Annotation';
+import Annotation from '../../components/_Annotation/_Annotation';
+import Popup from '../../components/Popup/Popup';
 
 import './Gallery.styl';
 
@@ -15,7 +17,11 @@ export default class Gallery extends Component {
     this._subscriptions = [];
     this.state = {
       compositions: [],
+      newCompositionId: -1,
+      annotationOppenned: true,
     };
+
+    this._linkToComposition = this._linkToComposition.bind(this);
   }
 
 
@@ -38,26 +44,33 @@ export default class Gallery extends Component {
   }
 
   _onCompositionsReceived(compositions) {
-    console.log("compo received");
+    console.log('Compositions received');
     this.setState({ compositions });
   }
-  _onNewCompositionReceived(newCompositions, compositionId) {
-    // ERROR setState doexn't works
-    this.setState({ compositions: newCompositions });
 
-    // TODO afficher la pop up pour enregistrer les données de la nouvelle compo.
+  _onNewCompositionReceived(compositions, newCompositionId) {
+    console.log('New composition received');
+    this.setState({ compositions, newCompositionId });
+  }
+
+  _linkToComposition(id) {
+    browserHistory.push(`/gallery/composition/${id}`);
   }
 
   render() {
-    console.log(this.state);
-
-    const c = this.state.compositions.map((composition) =>
-      <Composition data={composition} key={composition.id} />
-    );
     return (
       <section className="Gallery _wrapper">
 
-        <Annotation />
+        <Annotation
+          className="Gallery-annotation"
+          open={this.state.annotationOppenned}
+          title="Annotation"
+        >
+           Il est possible de scanner le code
+            afin d'enregistrer la composition sur l'application
+            <strong> RICOCHET.</strong>
+        </Annotation>
+
         <header className="Gallery-header">
           <h1 className="Gallery-title" ref="title">Sonothèque</h1>
         </header>
@@ -65,11 +78,12 @@ export default class Gallery extends Component {
         <ul className="Gallery-compositions">
           {
             this.state.compositions.map((composition) =>
-              <Composition data={composition} key={composition.id} />
+              <Composition data={composition} key={composition.id} linkToComposition={this._linkToComposition} />
             )
           }
         </ul>
 
+        <Popup newCompositionId={this.state.newCompositionId} />
       </section>
     );
   }

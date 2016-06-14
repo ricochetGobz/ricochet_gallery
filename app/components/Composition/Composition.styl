@@ -6,10 +6,15 @@ compositionWidth = 280px;
 
 .Composition {
   width: compositionWidth;
-  margin-bottom: _margin*2;
+  margin: _margin _margin*0.5;
   display: flex;
   flex-direction: column-reverse;
   cursor: pointer;
+
+  // TODO ajouter une class au svg d'office
+    svg {
+      center();
+    }
 
   // HEADER
   &-header {
@@ -22,9 +27,18 @@ compositionWidth = 280px;
   }
 
   &-detail {
+    min-height: _margin*2
+    position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    margin-left: _margin*1.5;
+
+    &::after {
+      content: '';
+      icon(_margin*1.2, 8);
+      centerY();
+      left: -(_margin*1.5);
+    }
   }
 
   &-title {
@@ -37,22 +51,6 @@ compositionWidth = 280px;
     letter-spacing: 0.2em;
   }
 
-  &-description {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    width: 70%
-    overflow: hidden;
-  }
-
-  &-icon {
-    margin-right: _margin * 0.5;
-    &_note {
-      height: _margin * 1.5;
-    }
-  }
-
   // JACKET
   &-jacket {
     position: relative;
@@ -60,13 +58,7 @@ compositionWidth = 280px;
     height: compositionWidth;
   }
 
-  &-image {
-    width: 100%;
-    height: 100%;
-  }
-
   &-overlay {
     overlay();
   }
-
 }

@@ -1,0 +1,55 @@
+
+@import '../../style/variables';
+@import '../../style/mixins';
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+
+
+  &-label {
+    font-style: italic;
+    font-size: 0.8em;
+  }
+
+  &-input {
+    position: relative;
+    border-bottom: 2px solid fontColor;
+    margin: _margin*0.5 0;
+
+    input {
+      padding: _margin*0.7;
+      padding-left: _margin*2;
+      color: fontColorSecondary;
+      letter-spacing: 2px;
+
+      &::placeholder {
+        text-transform: uppercase;
+        font-size: 0.7em;
+        color: fontColorSecondary;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: _margin*0.75;
+      left: 0;
+      icon(_margin*1.2, 8);
+    }
+
+    &_mail {
+      &::after {
+        icon(_margin*1.2, 5);
+      }
+    }
+
+    &_author {
+      &::after {
+        icon(_margin*1.2, 7);
+      }
+    }
+  }
+}

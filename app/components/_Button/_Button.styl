@@ -4,25 +4,38 @@
 
 buttonHeight = 2.5em;
 
-roundButton(d, img) {
-  circle(d);
+roundButton(size, sprite){
+  circle(size);
+  icon(size, sprite);
+  display: block;
+  border: 0;
+  margin: 0;
   padding: 0;
-  background-image: url(img);
-  background-position: 50% 50%;
-  background-size: 50%;
-  background-repeat: no-repeat;
+
+  &:hover {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .Button {
   font-size: 0.7em;
-  line-height: buttonHeight;
   border-radius: buttonHeight;
   text-transform: uppercase;
   letter-spacing: 3px;
-  border: 2px solid fontColor;
+  border: 3px solid fontColor;
   color: fontColor;
-  padding: 0 _margin*1.8;
+  padding: _margin*0.5 _margin*1.8;
+  margin: _margin*0.5 0;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    margin-top: _margin*0.25;
+    margin-bottom: _margin*0.75;
+    padding-top: _margin*0.3;
+    padding-bottom: _margin*0.7;
+  }
 
   &_green {
     border-color: validColor;
@@ -30,14 +43,30 @@ roundButton(d, img) {
   }
 
   &_play {
-    roundButton(100px, '../'+imgsPath+'/iconNote.png');
+    roundButton(_margin*6, 0);
+
+    &:hover {
+      transform: rotate(120deg);
+    }
+  }
+
+  &_pause {
+    roundButton(_margin*6, 2);
+
+    &:hover {
+      transform: rotate(180deg);
+    }
   }
 
   &_close {
-    roundButton(60px, '../'+imgsPath+'/iconNote.png');
+    roundButton(_margin*3, 3);
     position: absolute;
     top: _margin*2;
     right: _margin*3;
-    border-color: fontColorSecondary;
+    transition: 0.2s;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
   }
 }
