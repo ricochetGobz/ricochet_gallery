@@ -15,6 +15,21 @@ export default class Player extends Component {
   }
 
   componentDidMount() {
+    const nbrOfNotes = 6;
+    const nbrOfSprites = 78;
+    const animations = [];
+
+    let i, j;
+    for (i = 1; i <= nbrOfNotes; i++) {
+      animations[i] = [];
+
+      // Load images
+      for (j = 0; j < nbrOfSprites; j++) {
+        animations[i].push(
+          PIXI.Texture.fromImage(require(`../../assets/imgs/sprites/son_0${i}/son_0${i}_000${j}.png`))
+        );
+      }
+    }
   }
 
   componentWillUnmount() {}
