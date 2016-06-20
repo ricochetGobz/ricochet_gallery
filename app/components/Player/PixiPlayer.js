@@ -29,9 +29,6 @@ export default class PixiPlayer {
       this.stage.addChild(this.sounds[i]);
     }
 
-
-
-
     this.animations = new Animations();
 
     // for (var i = 0; i < 6; i++) {

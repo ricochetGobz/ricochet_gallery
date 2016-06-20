@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
+import TweenMax from 'gsap';
+
 import adrs from '../../core/addresses';
 import utils from '../../core/utils';
 import CodeGenerator from '../../core/codeGenerator';
@@ -36,10 +38,30 @@ export default class CompositionView extends Component {
       utils.emitter.addListener(adrs.SEND_COMPOSITIONS, this._onAllCompositionsReceived)
     );
     utils.emitter.emit(adrs.GET_COMPOSITION, parseInt(this.props.params.id, 10));
+
+    this.showCompo();
   }
 
   componentWillUnmount() {
+    this.hideCompo();
+  }
 
+  showCompo() {
+    let left = this.refs.columnLeft,
+        right = this.refs.columnRight;
+    let tl = new TimelineMax();
+    tl.fromTo(left, .4, {alpha:0}, {alpha:1, delay: 0.2});
+    tl.fromTo(right, .4, {alpha:0}, {alpha:1, delay: - 0.3});
+  }
+
+  hideCompo() {
+    let left = this.refs.columnLeft,
+        right = this.refs.columnRight;
+    let tl = new TimelineMax();
+    tl.fromTo(left, .4, {alpha:1}, {alpha:0});
+    tl.fromTo(right, .4, {alpha:1}, {alpha:0, delay: - 0.2, onComplete:() => {
+      browserHistory.push('/gallery/')
+    }});
   }
 
   _onCompositionReceived(composition) {
@@ -53,7 +75,7 @@ export default class CompositionView extends Component {
 
   _close() {
     console.log('close');
-    browserHistory.push('/gallery/');
+    this.hideCompo();
   }
 
   render() {
@@ -72,11 +94,11 @@ export default class CompositionView extends Component {
     return (
       <section className="CompositionView _wrapper">
 
-        <section className="CompositionView-column_left">
+        <section ref="columnLeft" className="CompositionView-column_left">
           <Player timeline={this.state.composition.timeline} />
         </section>
 
-        <section className="CompositionView-column_right">
+        <section ref="columnRight" className="CompositionView-column_right">
           <div className="CompositionView-dateDiff">
             <_DateDiff createdAt={this.state.composition.createdAt} />
           </div>
@@ -101,7 +123,7 @@ export default class CompositionView extends Component {
           </form>
         </section>
 
-        <button className="Button Button_close" onClick={this._close} />
+        <button className="Button Button_close" onClick={this._close.bind(this)} />
       </section>
     );
   }

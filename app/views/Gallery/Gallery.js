@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
+import TweenMax from 'gsap';
+
 import adrs from '../../core/addresses';
 import utils from '../../core/utils';
 
@@ -21,6 +23,9 @@ export default class Gallery extends Component {
       annotationOppenned: true,
     };
 
+    this.isShown = false;
+    this.first = false;
+
     this._linkToComposition = this._linkToComposition.bind(this);
   }
 
@@ -35,6 +40,53 @@ export default class Gallery extends Component {
     utils.emitter.emit(adrs.GET_COMPOSITIONS);
   }
 
+  componentDidUpdate() {
+    // this.isShown = false;
+    var compos = document.getElementsByClassName("Composition");
+    for (var i = 0; i < compos.length; i++) {
+      if (!this.isShown) TweenMax.set(compos[i], {alpha:0});
+    }
+    this.showGallery();
+    console.log("update")
+  }
+
+  showGallery() {
+    console.log("showGallery");
+    if (!this.isShown) {
+      var compos = document.getElementsByClassName("Composition");
+      var tl = new TimelineMax();
+      for (var i = 0; i < compos.length; i++) {
+        var compo = compos[i];
+        let delay = - 0.3;
+        if (i == 0) delay = 0.5;
+        tl.fromTo(compo, .4, {alpha:0}, {alpha:1, delay: delay});
+        console.log(compo.y)
+        tl.fromTo(compo, .4, {y:"+=10"}, {y:"-=10", delay: - 0.4});
+      }
+      tl.play();
+      this.isShown = true;
+    }
+  }
+
+  hideGallery(id) {
+    if (this.isShown) {
+      var compos = document.getElementsByClassName("Composition");
+      var tl = new TimelineMax();
+      for (var i = 0; i < compos.length; i++) {
+        if(i != id) {
+          var compo = compos[i];
+          let delay = - 0.3;
+          if (i == 0) delay = 0.5;
+          tl.fromTo(compo, .4, {alpha:1}, {alpha:0, delay: delay});
+          console.log(compo.y)
+          tl.to(compo, .4, {y:"+=10", delay: - 0.4});
+        }
+      }
+      tl.play();
+      this.isShown = false;
+    }
+  }
+
   componentWillUnmount() {
     // remove emitter listeners
     for (let i = 0; i < this._subscriptions.lenght; i++) {
@@ -46,6 +98,19 @@ export default class Gallery extends Component {
   _onCompositionsReceived(compositions) {
     console.log('Compositions received');
     this.setState({ compositions });
+
+    // this.isShown = false;
+    // if (!this.first) {
+    //   console.log("first");
+    // //   this.hideGallery();
+    // //   this.showGallery();
+    // var compos = document.getElementsByClassName("Composition");
+    // for (var i = 0; i < compos.length; i++) {
+    //   TweenMax.set(compo[i], {alpha:0});
+    // }
+    //   this.first = true;
+    // }
+
   }
 
   _onNewCompositionReceived(compositions, newCompositionId) {
@@ -54,7 +119,19 @@ export default class Gallery extends Component {
   }
 
   _linkToComposition(id) {
-    browserHistory.push(`/gallery/composition/${id}`);
+
+    let compo = document.getElementsByClassName("Gallery-compositions")[0].children[id];
+    console.log(compo);
+    let isPushed = false;
+    this.hideGallery(id);
+    TweenMax.to(compo, .4, {delay: .4, transform:"scale(6)", ease:Linear.easeNone});
+    TweenMax.to(compo, .4, {delay: .4, y:"+=10"});
+    TweenMax.to(compo, .4, {delay: .4, alpha:0, ease:Linear.easeNone, onUpdate:() => {
+      if (compo.style.opacity < .02 && !isPushed) {
+        browserHistory.push(`/gallery/composition/${id}`);
+        isPushed = true;
+      }
+    }});
   }
 
   render() {
