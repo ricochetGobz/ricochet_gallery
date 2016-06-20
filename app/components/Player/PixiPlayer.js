@@ -88,9 +88,9 @@ export default class PixiPlayer {
           posy = this.sounds[data[i - 1].sound].position.y = (data[i - 1].position.y * 400) / 600;
       // console.log(this.sounds[data[i - 1].sound].position.x)
       let delay = 0;
-      if (i > 1) delay = parseInt(data[i - 1].createdAt.sec) - parseInt(data[i - 2].createdAt.sec) - (i - 1) * 3.4;
+      if (i > 1) delay = parseInt(data[i - 1].createdAt.sec) - parseInt(data[i - 2].createdAt.sec) - (i - 2) * 3.4;
       let anim = {
-        movieclip : this.animations.createAnim(data[i - 1].sound, posx, posy),
+        movieclip : this.animations.createAnim(data[i - 1].sound , posx, posy),
         delay : delay,
         isPlaying : false
       };

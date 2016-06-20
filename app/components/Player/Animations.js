@@ -32,7 +32,7 @@ export default class SpritesheetFactory {
 
     console.log(animations);
     console.log(id, animations[id])
-    const animNote = new PIXI.extras.MovieClip(animations[id]);
+    const animNote = new PIXI.extras.MovieClip(animations[7 - id]);
 
     animNote.position.x = x;
     animNote.position.y = y;

@@ -26,7 +26,7 @@ var config = {
     },
     node: {  // this is for pixi.js
        fs: "empty"
-   },
+    },
     devtool: "inline-source-map",
     module: {
       noParse: [],
