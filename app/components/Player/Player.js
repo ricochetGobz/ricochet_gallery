@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { pixi as Pixi } from 'pixi.js';
+import TweenMax from 'gsap';
+
+import PixiPlayer from './PixiPlayer';
 
 import './Player.styl';
 import '../_Button/_Button.styl';
@@ -14,17 +18,29 @@ export default class Player extends Component {
     this._togglePlayer = this._togglePlayer.bind(this);
   }
 
-  componentDidMount() {
+  update() {
+    this.player.renderer.render( this.player.stage );
   }
 
-  componentWillUnmount() {}
+  componentDidMount() {
+    this.player = new PixiPlayer();
+    this.function = this.update.bind(this);
+    document.getElementsByClassName('Player-render')[0].insertBefore( this.player.renderer.view, document.getElementsByClassName('Player-render')[0].firstChild );
+    TweenMax.ticker.addEventListener( 'tick', this.function);
+  }
+
+  componentWillUnmount() {
+    TweenMax.ticker.removeEventListener( 'tick', this.function);
+  }
 
   _togglePlayer() {
     const played = !this.state.played;
     if (played) {
       // Show jacket
+      this.player.play(this.props);
     } else {
       // Hide jacket
+      this.player.pause();
     }
     this.setState({ played });
   }
@@ -53,5 +69,5 @@ export default class Player extends Component {
 }
 
 Player.propTypes = {
-  params: React.PropTypes.object,
+  timeline: React.PropTypes.array,
 };

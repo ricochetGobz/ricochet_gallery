@@ -24,6 +24,9 @@ var config = {
         filename: 'bundle.js',
         publicPath: 'http://localhost:3333/'
     },
+    node: {  // this is for pixi.js
+       fs: "empty"
+   },
     devtool: "inline-source-map",
     module: {
       noParse: [],
