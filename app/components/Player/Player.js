@@ -23,10 +23,12 @@ export default class Player extends Component {
   }
 
   componentDidMount() {
+
     this.player = new PixiPlayer();
     this.function = this.update.bind(this);
     document.getElementsByClassName('Player-render')[0].insertBefore( this.player.renderer.view, document.getElementsByClassName('Player-render')[0].firstChild );
     TweenMax.ticker.addEventListener( 'tick', this.function);
+
   }
 
   componentWillUnmount() {
