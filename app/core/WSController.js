@@ -18,8 +18,8 @@ export default class WSConnection {
   }
 
   init() {
-    this._client = new W3CWebSocket(`ws://localhost:${PORT}/`, 'echo-protocol');
-    // this._client = new W3CWebSocket(`ws://192.168.1.4:${PORT}/`, 'echo-protocol');
+    // this._client = new W3CWebSocket(`ws://localhost:${PORT}/`, 'echo-protocol');
+    this._client = new W3CWebSocket(`ws://192.168.1.4:${PORT}/`, 'echo-protocol');
 
     this._client.onerror = (err) => {
       this._callListener(adrs.SERVER_ERROR, err);

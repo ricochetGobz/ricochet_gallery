@@ -35,9 +35,12 @@ export default class CompositionView extends Component {
     this._subscriptions.push(
       utils.emitter.addListener(adrs.SEND_COMPOSITIONS, this._onAllCompositionsReceived)
     );
+    utils.emitter.emit(adrs.GET_COMPOSITION, parseInt(this.props.params.id, 10));
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+
+  }
 
   _onCompositionReceived(composition) {
     console.log('composition received', composition);
@@ -89,7 +92,7 @@ export default class CompositionView extends Component {
             </div>
           </div>
           <form action="" className="CompositionView-form Form">
-            <label className="Form-label" htmlFor="mail">Recevoir la partitions ?</label>
+            <label className="Form-label" htmlFor="mail">Recevoir la partition ?</label>
             <div className="Form-input Form-input_mail">
               <input type="text" placeholder="Adresse mail" />
             </div>
