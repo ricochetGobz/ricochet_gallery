@@ -6,7 +6,8 @@ import PixiPlayer from './PixiPlayer';
 
 import './Player.styl';
 import '../_Button/_Button.styl';
-
+import partitionUrl from '../../assets/imgs/partition.jpg';
+;
 export default class Player extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +65,9 @@ export default class Player extends Component {
           {timer}
 
         </div>
-        <div className="Player-partition  _frame _frame_purple"></div>
+        <div className="Player-partition  _frame _frame_purple">
+          <img src={partitionUrl} alt="partition"/>
+        </div>
       </div>
     );
   }
